@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Digital Clock</title>
+<style>
+    body{
+        background-image: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtczgwLXBhc3RlbC1wbG95LTAxYV8xLmpwZw.jpg");
+        background-size: cover;
+    }
+    .Clock{
+        position: absolute;
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 50%;
+        left:50%;
+        transform: translateX(-50%) translateY(-50%);
+        color:black;
+    }
+    .btn24{
+        background-color: white;
+        font-size: 30px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 5px;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
+
+    }
+    .btn12{
+        background-color:white;
+        font-size: 30px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        padding:20px;
+        margin: 20px;
+        border-radius: 5px;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
+    }
+</style>
+</head>
+<body>
+<div id="DigitalClock" class="Clock">
+    <button onclick="DigitalClock()" class="btn24">24-Hours-Formatt</button>
+    <br>
+    <button onclick="DigitalClock1()" class="btn12">12-Hours-Formatt</button>
+<script type="text/javascript">
+function DigitalClock() {
+    var date=new Date();
+    var hours=date.getHours();
+    var mints=date.getMinutes();
+    var secs=date.getSeconds();
+    var session="AM";
+    if(hours>12){
+       session="PM";
+    }
+    if(hours==24){
+        session="AM";
+    }
+hours=(hours<10)?"0"+hours:hours;
+mints=(mints<10)?"0"+mints:mints;
+secs=(secs<10)?"0"+secs:secs;
+    document.getElementById("DigitalClock").innerHTML=hours+" hrs : "+mints+" mins : "+secs+" secs "+" "+session;
+    setTimeout(DigitalClock,1000);
+    }
+    function DigitalClock1() {
+        var date=new Date();
+    var hours=date.getHours();
+    var mints=date.getMinutes();
+    var secs=date.getSeconds();
+    var session="AM";
+    if(hours==0){
+        hours=12;
+        session="PM";
+    }
+    if(hours>12){
+        hours=hours-12;
+        session="PM";
+    }
+hours=(hours<10)?"0"+hours:hours;
+mints=(mints<10)?"0"+mints:mints;
+secs=(secs<10)?"0"+secs:secs;
+document.getElementById("DigitalClock").innerHTML=hours+" hrs : "+mints+" mins : "+secs+" secs "+" "+session;
+    setTimeout(DigitalClock1,1000);
+    }
+</script>
+</body>
+</html>
